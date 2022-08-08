@@ -10,7 +10,10 @@ module.exports = {
         // capturar as informações vindas do formulario
         const {nome, email, senha, confirmacao} = req.body;
         // verificar se a senha bate com a confirmação
-
+        if(senha !== confirmacao){
+            res.render('error.ejs', {msg:"Senha não bate com a confirmação" })
+            return;
+        }
         // caso não bata, mandar mensagem de erro ... finalizar a função
 
         // Inserir as informações no BD
@@ -21,7 +24,12 @@ module.exports = {
                 senha: bcrypt.hashSync(senha, 10)
             }
         )
+        req.session.usuario = u;
         // enviar uma mensagem de sucesso
-        res.send(u)
+        res.redirect('/home')
+    },
+    mostrarHome: (req,res)=>{
+        let nome = req.session.usuario.nome;
+        res.render('home.ejs',{nome});
     }
 }
