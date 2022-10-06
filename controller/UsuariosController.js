@@ -29,7 +29,6 @@ module.exports = {
         res.redirect('/home')
     },
     mostrarHome: (req,res)=>{
-        let nome = req.session.usuario.nome;
-        res.render('home.ejs',{nome});
+        res.render('home.ejs',{usuario:req.session.usuario});
     }
 }

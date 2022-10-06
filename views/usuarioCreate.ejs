@@ -56,19 +56,26 @@
             <span>Confirmação de Senha</span>
             <input type="password" name="confirmacao">
         </label>
-        <label >
-            <span>Gênero</span>
-            <select >
-                <option selected disabled >Menino ou Menina?</option>
-                <option value="m">Menino</option>
-                <option value="f">Menina</option>
-            </select>
-        </label>
         <div>
             <button type="submit">Enviar</button>
         </div>
 
     </form>
    </main>
+   <script>
+   
+   // Fase 1: Captura os elemenntos [form, os campos nome, email, senha e confirmação]
+    const form = document.querySelector('form')
+    const inputNome = document.querySelector('input[name="nome"]')
+    const  inputEmail = document.querySelector('input[name="email"]')
+    const  inputSenha = document.getElementById('input[name="senha"]');
+    const  inputConfimacao =document.getElementById('input[name = "confimacao"]');
+    // Fase 2: Associar a submissão do formulario um função chamada onFormSubmit
+    const onFormSubmit = (evt)=>{
+        evt.preventDefault();
+        console.log('oiii')
+    }
+    form.addEventListener('submit', onFormSubmit);
+   </script>
 </body>
 </html>
